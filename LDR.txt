@@ -1,0 +1,40 @@
+
+
+// the setup routine runs once when you press reset:
+
+const int RELAY_PIN = 3;  // the Arduino pin, which connects to the IN pin of relay
+
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  
+  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(A0,INPUT);
+  Serial.begin(9600);
+}
+
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input on analog pin 0:
+  int sensorValue = analogRead(A0);
+ int Y = map(sensorValue,0,1023,0,255);
+ Serial.println(Y);
+if (Y <= 5){
+    Serial.println("Convey belt On");
+    digitalWrite(RELAY_PIN,LOW)  ;
+    Serial.println("Nice");
+    }
+else{
+      digitalWrite(RELAY_PIN, HIGH);
+      Serial.println("Convey belt OFF");
+      }
+ 
+
+  
+  delay(1);        // delay in between reads for stability
+  
+}
+
+
+  
+ 
+
